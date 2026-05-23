@@ -7,6 +7,24 @@
 
 ---
 
+## 🧪 Beta Tester Program — 10 Spots Available
+
+We are looking for **10 developers** to join our closed beta testing program.
+
+**What you get:**
+- 1 game of your choice protected by SCG **free for life**
+- Early access before public launch
+- Direct input into how the product is shaped
+
+**What we ask:**
+- Test SCG with a real or test game on Meta Quest
+- Share your experience, bugs, and feedback via [support@sigchainguard.com](mailto:support@sigchainguard.com)
+- Be honest — good or bad, we want to know
+
+If you are interested, email [support@sigchainguard.com](mailto:support@sigchainguard.com) with the subject line **"Beta Tester"**. Spots are first come first served and limited to 10.
+
+---
+
 ## What is SigChain Guard?
 
 SigChain Guard (SCG) is an anti-cheat SDK built specifically for VR games on Meta Quest and Android VR headsets. Unlike traditional anti-cheat systems that rely on software checks alone, SCG roots its trust in the device's hardware — specifically the Trusted Execution Environment (TEE) built into the chip itself.
@@ -27,8 +45,10 @@ Most anti-cheat solutions are built for PC or mobile. VR is different — sidelo
 - **Cross-game ban database** — One ban affects every SCG-protected game
 - **Continuous re-validation** — Passing launch is not enough. SCG re-validates silently mid-session
 - **Zero client trust** — The server makes every decision. The client collects and sends — nothing more
-- **8 validation gates** — Payload integrity, SDK version, timestamp, nonce replay, bridge hash, TEE cert chain, APK baseline, developer-configured checks
+- **8 validation gates** — Payload integrity, SDK version control, timestamp, nonce replay prevention, TEE cert chain, APK baseline, developer-configured checks
 - **Built for VR** — Works with sideloaded apps, dev builds, Meta Store, AppLab. No dependency on Google Play Services
+- **2FA on all accounts** — Email-based two-factor authentication on every login
+- **Session security** — Sessions are cryptographically bound to your device — stolen cookies are useless on another machine
 
 ---
 
@@ -48,21 +68,28 @@ If there are bugs or security issues — and there may be, this is an early beta
 
 **Early beta — testing and bug fixing in progress.**
 
-What is working:
-- Full 8-gate validation pipeline on Quest 3S
-- BTKV game registration flow
-- Auth system (signup, email verification, signin, password reset)
-- Dashboard UI (basic)
+**What is working:**
+- Full 8-gate validation pipeline — tested and passing on Quest 3S
+- SDK version control (Gate 5) — deprecated versions blocked instantly
+- BTKV game registration flow — APK upload, cert extraction, token generation, verification
+- Auth system — signup, email verification, signin, password reset, 2FA with email OTP
+- Session fingerprinting — sessions bound to device IP + user agent
+- Dashboard settings — view API key (password protected), delete game (OTP verified), 2FA management
 - Hardware HWID generation and tracking
-- TEE attestation with Meta root CA
+- TEE attestation — verified against device hardware root CA
+- APK baseline fingerprinting — cert + package locked after 3 confirmations
+- Unity SDK — SCG.Validate(), ReValidate(), ValidatePS(), HWIDPlayer(), ReturnHwid()
+- Unity setup window — settings checker, Fix All, BTKV inject/remove, API key management
+- Proguard/R8 obfuscation with seed-based package repackaging
 
-What is still being worked on:
-- Bridge hash system (per-SDK version)
-- Billing integration
-- Dashboard real data (validations, players, stats)
-- Unity package finalization
-- Docs
-- Security audit
+**What is still being worked on:**
+- Billing integration (Lemon Squeezy)
+- Dashboard real data (validations, players, MAU stats)
+- Unity package finalization and clean project testing
+- Photon integration in Unity editor window
+- JWT server-side verification endpoint
+- Docs page
+- Final security audit before launch
 
 ---
 
@@ -70,7 +97,7 @@ What is still being worked on:
 
 **Website & Dashboard:** [sigchainguard.com](https://sigchainguard.com)
 
-Once released: create an account, register your game via the BTKV verification flow, get your API key, and drop the Unity package into your project.
+Once released: create an account, register your game via the BTKV verification flow, get your API key, and drop the Unity package into your project. Integration takes under 30 minutes.
 
 ---
 
